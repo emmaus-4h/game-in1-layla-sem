@@ -11,6 +11,8 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
 - [ ] teken speler
 - [ ] beweeg speler
+- [ ] teken vijand
+- [ ] beweeg vijand
 - [ ] Dingen ontwijken/parcour
 - [ ] Munten verzamelen
 - [ ] punten op scherm zetten
