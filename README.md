@@ -1,6 +1,6 @@
 Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
-## Mijn spel: *naam van het spel*
+## Mijn spel: *End of the World*
 Gemaakt door:
 - *Sem*
 - *Layla*
@@ -17,6 +17,7 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] punten kunnen scoren
 - [ ] Highscore verbeteren
 - [ ] uitlegscherm
+- [ ] Boosts verzinnen/maken
 
 Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
 - [ ] *later uitwerken*
