@@ -2,8 +2,8 @@ Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
 ## Mijn spel: *End of the World*
 Gemaakt door:
-- *Sem*
-- *Layla*
+- *Sem Lindeboom*
+- *Layla Lemhaouli*
 
 ## Mijn planning
 
