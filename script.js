@@ -80,7 +80,7 @@ var tekenKogel = function(x, y) {
  */
 var tekenSpeler = function(x, y) {
   fill("red");
-  rect(x, y, 60, 100);
+  rect(x, y, 40, 200);
 };
 
 
