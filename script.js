@@ -82,7 +82,7 @@ var tekenSpeler = function(x, y) {
   fill("red");
   rect(x * 2, y, 80, 180, 300);
   fill("white")
-  ellipse(1237, y, 150, 100, 100);
+  ellipse(x + 750, y, 150, 100, 100);
 };
 
 
@@ -106,7 +106,7 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-      
+    
 };
 
 
