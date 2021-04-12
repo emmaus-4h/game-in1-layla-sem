@@ -22,8 +22,12 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
+const KEY_SPACE = 32;
+
 var spelerX = 800; // x-positie van speler
 var spelerY = 730; // y-positie van speler
+
+var snelheidY = 20; // Y-snelheid van speler
 
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
@@ -32,6 +36,8 @@ var vijandX = 0;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
+
+var imgA = 0; // achtergrond plaatje
 
 
 
@@ -48,6 +54,7 @@ var score = 0; // aantal behaalde punten
 var tekenVeld = function () {
   fill("grey");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
+  imgA = loadImage('Plaatje.jpeg');
 };
 
 
@@ -56,8 +63,8 @@ var tekenVeld = function () {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenVijand = function(x, y) {
-    
+var tekenVijand = function (x, y) {
+
 
 };
 
@@ -67,7 +74,7 @@ var tekenVijand = function(x, y) {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenKogel = function(x, y) {
+var tekenKogel = function (x, y) {
 
 
 };
@@ -78,7 +85,7 @@ var tekenKogel = function(x, y) {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenSpeler = function(x, y) {
+var tekenSpeler = function (x, y) {
   fill("red");
   rect(x + 0, y, 70, 160, 300);
   fill("white")
@@ -89,14 +96,14 @@ var tekenSpeler = function(x, y) {
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
-var beweegVijand = function() {
+var beweegVijand = function () {
 };
 
 
 /**
  * Updatet globale variabelen met positie van kogel of bal
  */
-var beweegKogel = function() {
+var beweegKogel = function () {
 
 };
 
@@ -105,15 +112,21 @@ var beweegKogel = function() {
  * Kijkt wat de toetsen/muis etc zijn.
  * Updatet globale variabele spelerX en spelerY
  */
-var beweegSpeler = function() {
-  
+var beweegSpeler = function () {
+  if (keyIsDown(KEY_SPACE)) {
+    spelerY = spelerY - 30;
+  }
+  spelerY = spelerY - snelheidY;
+  if (spelerY < 400) {
+    spelerY = 400;
+  }
 
 };
 /**
  * Zoekt uit of de vijand is geraakt
  * @returns {boolean} true als vijand is geraakt
  */
-var checkVijandGeraakt = function() {
+var checkVijandGeraakt = function () {
 
   return false;
 };
@@ -124,8 +137,8 @@ var checkVijandGeraakt = function() {
  * bijvoorbeeld door botsing met vijand
  * @returns {boolean} true als speler is geraakt
  */
-var checkSpelerGeraakt = function() {
-    
+var checkSpelerGeraakt = function () {
+
   return false;
 };
 
@@ -134,8 +147,8 @@ var checkSpelerGeraakt = function() {
  * Zoekt uit of het spel is afgelopen
  * @returns {boolean} true als het spel is afgelopen
  */
-var checkGameOver = function() {
-    
+var checkGameOver = function () {
+
   return false;
 };
 
@@ -165,12 +178,12 @@ function draw() {
       beweegVijand();
       beweegKogel();
       beweegSpeler();
-      
+
       if (checkVijandGeraakt()) {
         // punten erbij
         // nieuwe vijand maken
       }
-      
+
       if (checkSpelerGeraakt()) {
         // leven eraf of gezondheid verlagen
         // eventueel: nieuwe speler maken
