@@ -64,6 +64,8 @@ var tekenVeld = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function (x, y) {
+  fill ("red");
+  rect
 
 
 };
