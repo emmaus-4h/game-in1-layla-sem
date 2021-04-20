@@ -64,7 +64,7 @@ var tekenVeld = function () {
  */
 var tekenVijand = function (x, y) {
   fill ("black");
-  rect (1000,550,180,80);
+  rect (1000,780,300,100);
 
 
 };
