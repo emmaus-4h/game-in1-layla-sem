@@ -89,7 +89,7 @@ var tekenKogel = function (x, y) {
 var tekenSpeler = function (x, y) {
   fill("red");
   rect(x + 0, y + 180, 70, 160, 300);
-  fill("white")
+  fill (255,195,170);
   ellipse(x + 35, y + 180, 120, 80, 90);
 };
 
