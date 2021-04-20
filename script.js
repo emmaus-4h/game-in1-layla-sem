@@ -37,7 +37,7 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-var imgA = 0; // achtergrond plaatje
+
 
 
 
@@ -54,7 +54,6 @@ var imgA = 0; // achtergrond plaatje
 var tekenVeld = function () {
   fill("grey");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
-  imgA = loadImage('Plaatje.jpeg');
 };
 
 
