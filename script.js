@@ -115,14 +115,20 @@ var beweegKogel = function () {
  */
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY - 30;
-  
-  spelerY = spelerY - snelheidY;
-  if (spelerY < 550) {
+    spelerY = spelerY - 60;
+  }
+  if (!keyIsDown(KEY_SPACE)) {
+    spelerY = spelerY + 30;
+  }
+
+
+  //spelerY = spelerY - snelheidY;
+  if (spelerY > 550) {
     spelerY = 550;
   }
 
-}};
+
+};
 /**
  * Zoekt uit of de vijand is geraakt
  * @returns {boolean} true als vijand is geraakt
