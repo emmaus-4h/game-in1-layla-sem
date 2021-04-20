@@ -24,8 +24,8 @@ var spelStatus = SPELEN;
 
 const KEY_SPACE = 32;
 
-var spelerX = 800; // x-positie van speler
-var spelerY = 730; // y-positie van speler
+var spelerX = 400; // x-positie van speler
+var spelerY = 800; // y-positie van speler
 
 var snelheidY = 20; // Y-snelheid van speler
 
@@ -88,9 +88,9 @@ var tekenKogel = function (x, y) {
  */
 var tekenSpeler = function (x, y) {
   fill("red");
-  rect(x + 0, y, 70, 160, 300);
+  rect(x + 0, y + 180, 70, 160, 300);
   fill("white")
-  ellipse(x + 35, y, 120, 80, 90);
+  ellipse(x + 35, y + 180, 120, 80, 90);
 };
 
 
@@ -121,6 +121,9 @@ var beweegSpeler = function () {
     spelerY = spelerY + 30;
   }
 
+  if (tekenSpeler > 900) {
+    spelerY = spelerY +30;
+  }
 
   //spelerY = spelerY - snelheidY;
   if (spelerY > 550) {
