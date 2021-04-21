@@ -122,7 +122,7 @@ var beweegSpeler = function () {
     spelerY = spelerY + 20;
   }
 
-  if (keyIsDown(KEY_39)) {
+  if (keyIsDown(K_RIGHT)) {
     spelerX = spelerX - 20;
   }
 
