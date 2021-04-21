@@ -63,8 +63,8 @@ var tekenVeld = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function (x, y) {
-  fill ("black");
-  rect (1000,780,300,100);
+  fill("black");
+  rect(1000, 780, 300, 100);
 
 
 };
@@ -89,8 +89,9 @@ var tekenKogel = function (x, y) {
 var tekenSpeler = function (x, y) {
   fill("red");
   rect(x + 0, y + 180, 70, 160, 300);
-  fill (255,195,170);
-  ellipse(x + 35, y + 180, 120, 80, 90);
+  fill(255, 195, 170);
+  ellipse(x + 35, y + 180, 110, 70, 70);
+
 };
 
 
@@ -115,21 +116,28 @@ var beweegKogel = function () {
  */
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY - 60;
+    spelerY = spelerY - 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY + 30;
+    spelerY = spelerY + 20;
+  }
+
+  if (keyIsDown(KEY_39)) {
+    spelerX = spelerX - 20;
+  }
+
+  if (keyIsDown(KEY_SPACE)) {
+    spelerX = spelerX + 20;
   }
 
   if (tekenSpeler > 900) {
-    spelerY = spelerY +30;
+    spelerY = spelerY + 30;
   }
 
   //spelerY = spelerY - snelheidY;
   if (spelerY > 550) {
     spelerY = 550;
   }
-
 
 };
 /**
