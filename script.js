@@ -24,6 +24,7 @@ var spelStatus = SPELEN;
 
 const KEY_SPACE = 32;
 const KEY_RIGHT = 39;
+const KEY_LEFT = 37;
 
 var spelerX = 400; // x-positie van speler
 var spelerY = 800; // y-positie van speler
@@ -124,11 +125,11 @@ var beweegSpeler = function () {
   }
 
   if (keyIsDown(KEY_RIGHT)) {
-    spelerX = spelerX - 20;
+    spelerX = spelerX + 20;
   }
 
-  if (keyIsDown(KEY_SPACE)) {
-    spelerX = spelerX + 20;
+  if (keyIsDown(KEY_LEFT)) {
+    spelerX = spelerX - 20;
   }
 
   if (tekenSpeler > 900) {
