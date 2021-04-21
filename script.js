@@ -23,6 +23,7 @@ const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
 const KEY_SPACE = 32;
+const KEY_RIGHT = 39;
 
 var spelerX = 400; // x-positie van speler
 var spelerY = 800; // y-positie van speler
@@ -122,7 +123,7 @@ var beweegSpeler = function () {
     spelerY = spelerY + 20;
   }
 
-  if (keyIsDown(K_RIGHT)) {
+  if (keyIsDown(KEY_RIGHT)) {
     spelerX = spelerX - 20;
   }
 
