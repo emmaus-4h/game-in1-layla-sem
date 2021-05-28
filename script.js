@@ -101,6 +101,7 @@ var tekenSpeler = function (x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
+
 };
 
 
@@ -121,24 +122,24 @@ var beweegSpeler = function () {
     spelerY = spelerY - 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY + 20;
-  }
-
-  if (keyIsDown(KEY_RIGHT)) {
-    spelerX = spelerX + 20;
-  }
-
-  if (keyIsDown(KEY_LEFT)) {
-    spelerX = spelerX - 20;
-  }
-
-  if (tekenSpeler > 900) {
     spelerY = spelerY + 30;
   }
 
+  //if (keyIsDown(KEY_RIGHT)) {
+  //  spelerX = spelerX + 20;
+ // }
+
+ // if (keyIsDown(KEY_LEFT)) {
+ //   spelerX = spelerX - 20;
+ // }
+
+  if (tekenSpeler < 900) {
+    spelerY = spelerY + 10;
+  }
+
   //spelerY = spelerY - snelheidY;
-  if (spelerY > 550) {
-    spelerY = 550;
+  if (spelerY > 560) {
+    spelerY = 560;
   }
 
 };
