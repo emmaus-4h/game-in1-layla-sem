@@ -68,6 +68,7 @@ var tekenVijand = function (x, y) {
   fill("black");
   rect(1000, 780, 300, 100);
 
+  rect(1500, 680, 500, 200);
 
 };
 
