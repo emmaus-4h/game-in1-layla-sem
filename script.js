@@ -95,6 +95,9 @@ var tekenSpeler = function (x, y) {
   fill(255, 195, 170);
   ellipse(x + 35, y + 180, 110, 70, 70);
 
+  var myImage = new Image(100, 200);
+myImage.src = 'head.jpg';
+document.body.appendChild(myImage);
 };
 
 
