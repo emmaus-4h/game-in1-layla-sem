@@ -1,4 +1,4 @@
- /// @ts-check
+/// @ts-check
 /// <reference path=".gitpod/p5.global-mode.d.ts" />
 "use strict";
 
@@ -24,7 +24,7 @@ var spelStatus = SPELEN;
 
 const KEY_SPACE = 32;
 const KEY_RIGHT = 39;
-const KEY_LEFT = 34; 
+const KEY_LEFT = 37;
 
 var spelerX = 400; // x-positie van speler
 var spelerY = 800; // y-positie van speler
@@ -34,7 +34,7 @@ var snelheidY = 20; // Y-snelheid van speler
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
 
-var vijandX = 1000;   // x-positie van vijand
+var vijandX = 2500;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
@@ -101,9 +101,9 @@ var tekenSpeler = function (x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
-  vijandX = vijandX - 1;
+  vijandX = vijandX - 10;
   if (vijandX < 0) {
-    vijandX = 1000;
+    vijandX = 2500;
   }
 };
 
@@ -128,23 +128,23 @@ var beweegSpeler = function () {
     spelerY = spelerY + 15;
   }
 
-  if (keyIsDown(KEY_RIGHT)) {
-    spelerX = spelerX + 20;
-  }
-
   if (keyIsDown(KEY_LEFT)) {
     spelerX = spelerX - 20;
   }
 
+  if (keyIsDown(KEY_RIGHT)) {
+    spelerX = spelerX + 20;
+  }
+
+
   if (keyIsDown(KEY_SPACE)) {
     spelerX = spelerX + 20;
- }
+  }
 
 
   if (tekenSpeler > 900) {
     spelerY = spelerY + 30;
   }
-
 
   //spelerY = spelerY - snelheidY;
   if (spelerY > 550) {
@@ -178,7 +178,7 @@ var checkSpelerGeraakt = function () {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function () {
- 
+
   return false;
 };
 
@@ -229,7 +229,7 @@ function draw() {
       }
       break;
     case GAMEOVER:
-       text("game over", 100, 100);
-    break;
+      text("game over", 100, 100);
+      break;
   }
 }
