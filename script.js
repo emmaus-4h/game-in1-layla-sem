@@ -34,7 +34,7 @@ var snelheidY = 20; // Y-snelheid van speler
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
 
-var vijandX = 0;   // x-positie van vijand
+var vijandX = 1000;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
@@ -66,7 +66,7 @@ var tekenVeld = function () {
  */
 var tekenVijand = function (x, y) {
   fill("black");
-  rect(1000, 780, 300, 100);
+  rect(vijandX, 780, 300, 100);
 
 
 };
@@ -101,6 +101,10 @@ var tekenSpeler = function (x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
+  vijandX = vijandX - 1;
+  if (vijandX < 0) {
+    vijandX = 1000;
+  }
 };
 
 
@@ -174,7 +178,7 @@ var checkSpelerGeraakt = function () {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function () {
-
+ 
   return false;
 };
 
@@ -224,5 +228,8 @@ function draw() {
         spelStatus = GAMEOVER;
       }
       break;
+    case GAMEOVER:
+       text("game over", 100, 100);
+    break;
   }
 }
