@@ -1,4 +1,4 @@
-/// @ts-check
+ /// @ts-check
 /// <reference path=".gitpod/p5.global-mode.d.ts" />
 "use strict";
 
@@ -24,7 +24,7 @@ var spelStatus = SPELEN;
 
 const KEY_SPACE = 32;
 const KEY_RIGHT = 39;
-const KEY_LEFT = 37;
+const KEY_LEFT = 34; 
 
 var spelerX = 400; // x-positie van speler
 var spelerY = 800; // y-positie van speler
@@ -68,7 +68,6 @@ var tekenVijand = function (x, y) {
   fill("black");
   rect(1000, 780, 300, 100);
 
-  rect(1500, 680, 500, 200);
 
 };
 
@@ -95,9 +94,6 @@ var tekenSpeler = function (x, y) {
   fill(255, 195, 170);
   ellipse(x + 35, y + 180, 110, 70, 70);
 
-  var myImage = new Image(100, 200);
-myImage.src = 'head.jpg';
-document.body.appendChild(myImage);
 };
 
 
@@ -105,7 +101,6 @@ document.body.appendChild(myImage);
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
-
 };
 
 
@@ -126,24 +121,30 @@ var beweegSpeler = function () {
     spelerY = spelerY - 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
+    spelerY = spelerY + 15;
+  }
+
+  if (keyIsDown(KEY_RIGHT)) {
+    spelerX = spelerX + 20;
+  }
+
+  if (keyIsDown(KEY_LEFT)) {
+    spelerX = spelerX - 20;
+  }
+
+  if (keyIsDown(KEY_SPACE)) {
+    spelerX = spelerX + 20;
+ }
+
+
+  if (tekenSpeler > 900) {
     spelerY = spelerY + 30;
   }
 
-  //if (keyIsDown(KEY_RIGHT)) {
-  //  spelerX = spelerX + 20;
- // }
-
- // if (keyIsDown(KEY_LEFT)) {
- //   spelerX = spelerX - 20;
- // }
-
-  if (tekenSpeler < 900) {
-    spelerY = spelerY + 10;
-  }
 
   //spelerY = spelerY - snelheidY;
-  if (spelerY > 560) {
-    spelerY = 560;
+  if (spelerY > 550) {
+    spelerY = 550;
   }
 
 };
