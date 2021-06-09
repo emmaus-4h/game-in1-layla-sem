@@ -36,6 +36,7 @@ var kogelY = 0;    // y-positie van kogel
 
 var vijandX = 2500;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
+var vijandsnelheid = 20;
 
 var vijand2X = 900;
 var vijand2Y = 880;
@@ -52,13 +53,17 @@ var okvijandY = 0;
 var bkvijandX = 0;
 var bkvijandY = 0;
 
-var aantlevens = 5;
+var hpop = 160;
+var bpop = 70;
 
+var hvijand1 = 100;
+var bvijand1 = 320;
 
+var aantlevens = 10000;
 
 var Image = "tsunami.gif";
 
-
+var versnellen = 1
 
 
 
@@ -85,7 +90,9 @@ var tekenVeld = function () {
  */
 var tekenVijand = function (x, y) {
   fill("black");
-  rect(vijandX, 780, 300, 100);
+  rect(vijandX, 800, bvijand1, hvijand1);
+
+
 
 };
 
@@ -114,7 +121,7 @@ var tekenKogel = function (x, y) {
  */
 var tekenSpeler = function (x, y) {
   fill("red");
-  rect(x + 0, y + 180, 70, 160, 300);
+  rect(x + 0, y + 180, bpop, hpop, 300);
   fill(255, 195, 170);
   ellipse(x + 35, y + 180, 110, 70, 70);
 
@@ -125,7 +132,7 @@ var tekenSpeler = function (x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
-  vijandX = vijandX - 20;
+  vijandX = vijandX - vijandsnelheid;
   if (vijandX < 0) {
     vijandX = 2500;
   }
@@ -155,7 +162,7 @@ var beweegKogel = function () {
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
     spelerY = spelerY - 20;
-    spelerX = spelerX + 20;
+    //  spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
     spelerY = spelerY + 20;
@@ -196,6 +203,65 @@ var checkVijandGeraakt = function () {
  */
 var checkSpelerGeraakt = function () {
 
+  okpopX = spelerX
+  okpopY = -1 * (spelerY - 550)
+  bkpopX = spelerX + bpop
+  bkpopY = -1 * (spelerY - 550 - hpop)
+
+  okvijandX = vijandX
+  okvijandY = -1 * vijandY
+  bkvijandX = vijandX + bvijand1
+  bkvijandY = -1 * (vijandY - hvijand1)
+
+  if (versnellen == 1) {
+    vijandsnelheid = vijandsnelheid + 0.05;
+  }
+  else {
+    vijandsnelheid = vijandsnelheid - 0.05;
+  }
+
+  if (vijandsnelheid > 40) {
+   versnellen = 0;
+  }
+  if (vijandsnelheid <= 20 ) {
+   versnellen = 1;
+ }
+
+  if (okpopX >= okvijandX && okpopX <= bkvijandX) {
+    if (okpopY >= okvijandY && okpopY <= bkvijandY) {
+      return true
+    } 
+    else {
+      if (bkpopY >= okvijandY && bkpopY <= bkvijandY) {
+        return true
+      }
+    }
+  }
+  if (bkpopX >= okvijandX && bkpopX <= bkvijandX) {
+    if (okpopY >= okvijandY && okpopY <= bkvijandY) {
+      return true
+    } 
+    else {
+      if (bkpopY >= okvijandY && bkpopY <= bkvijandY) {
+        return true
+      }
+    }
+  }
+  //   return true;
+  // }
+
+  // if (bkpopX > okvijandX && bkpopX < bkvijandX) {
+  //   return true;
+  // }
+
+  //if (okpopY < okvijandY && okpopY > bkvijandY) {
+  //  return true;
+  //}
+
+  //if (bkpopY < okvijandY && bkpopY > bkvijandY) {
+  //  return true;
+  //}
+
   return false;
 };
 
@@ -205,22 +271,40 @@ var checkSpelerGeraakt = function () {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function () {
+  text(aantlevens, 200, 100);
+  //text(spelerX, 500, 100);
+  // text(spelerY - 550, 600, 100);
+  text(okpopX, 500, 100);
+  text(okpopY, 550, 100);
+  
+  text(bkpopX, 700, 100)
+  text(bkpopY, 750, 100)
 
-  text(spelerX, 500, 100)
-  text(spelerY, 600, 100)
-  text(vijandX, 500, 200)
-  text(vijandY, 600, 200)
+  text(okvijandX, 500, 200);
+  text(okvijandY, 600, 200);
+  text(bkvijandY, 700, 200);
+  text(bkvijandY, 800, 200);
 
-  if ((spelerY- 550)  == vijandY && spelerX >= vijandX && spelerX <= (vijandX + 40)) {
-    text("GAME OVER", 800, 100);
-    fill("red");
-    rect(100, 100, 100, 100);
-  }
+  // if ((spelerY- 550)  == vijandY && spelerX >= vijandX && spelerX <= (vijandX + 40)) {
+  //    text("GAME OVER", 800, 100);
+  //    fill("red");
+  //   rect(100, 100, 100, 100);
+  //  };
 
-  //if ((spelerY == vijand2Y && spelerX >= vijand2X && speler X <= vijand2x)) {
+  //if (spelerY == vijand2Y && spelerX >= vijand2X && spelerX <= vijand2X) {
   //  fill("blue");
   //  text("HALLO", 500, 200);
-  //}
+  //  fill("yellow")
+  //  rect(900, 900, 100, 100);
+  // }
+  if (aantlevens == 0) {
+    text("GAME OVER", 800, 100);
+    fill("red");
+    //rect(100, 100, 100, 100);
+
+    return true;
+  }
+
   return false;
 };
 
@@ -258,8 +342,23 @@ function draw() {
 
       if (checkSpelerGeraakt()) {
         // leven eraf of gezondheid verlagen
+        aantlevens = aantlevens - 1;
+        spelerX = 400; // x-positie van speler
+        spelerY = 880; // y-positie van speler
+
+        snelheidY = 20; // Y-snelheid van speler
+        vijandsnelheid = 20
+
+        kogelX = 0;    // x-positie van kogel
+        kogelY = 0;    // y-positie van kogel
+
+        vijandX = 2500;   // x-positie van vijand
+        vijandY = 0;   
+
+
         // eventueel: nieuwe speler maken
       }
+
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
