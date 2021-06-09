@@ -27,7 +27,7 @@ const KEY_RIGHT = 39;
 const KEY_LEFT = 37;
 
 var spelerX = 400; // x-positie van speler
-var spelerY = 0; // y-positie van speler
+var spelerY = 880; // y-positie van speler
 
 var snelheidY = 20; // Y-snelheid van speler
 
@@ -38,6 +38,8 @@ var vijandX = 2500;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
+
+var Image = "tsunami.gif";
 
 
 
@@ -67,7 +69,10 @@ var tekenVeld = function () {
 var tekenVijand = function (x, y) {
   fill("black");
   rect(vijandX, 780, 300, 100);
+
 };
+
+
 
 
 /**
@@ -77,7 +82,8 @@ var tekenVijand = function (x, y) {
  */
 var tekenKogel = function (x, y) {
 
-
+    fill("black");
+  rect(vijandX, 10, 10, 10);
 };
 
 
@@ -125,7 +131,7 @@ var beweegSpeler = function () {
     spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY + 2;
+    spelerY = spelerY + 20;
     if (spelerY > 900) { spelerY = 900 };
   }
 
@@ -227,6 +233,8 @@ function draw() {
       tekenVijand(vijandX, vijandY);
       tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
+
+
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
