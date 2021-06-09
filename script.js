@@ -67,8 +67,6 @@ var tekenVeld = function () {
 var tekenVijand = function (x, y) {
   fill("black");
   rect(vijandX, 780, 300, 100);
-
-
 };
 
 
@@ -101,7 +99,7 @@ var tekenSpeler = function (x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
-  vijandX = vijandX - 10;
+  vijandX = vijandX - 40;
   if (vijandX < 0) {
     vijandX = 2500;
   }
@@ -179,6 +177,8 @@ var checkSpelerGeraakt = function () {
  */
 var checkGameOver = function () {
 
+  if (spelerX < 700 && vijandX < 1000)
+
   return false;
 };
 
@@ -195,6 +195,7 @@ function setup() {
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('black');
 }
+
 
 
 /**
