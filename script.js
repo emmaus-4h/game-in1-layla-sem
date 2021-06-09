@@ -369,7 +369,7 @@ function draw() {
         vijandX = 2500;   // x-positie van vijand
         vijandY = 0;
 
-        hvijand1 = hvijand1 +10;
+        
 
 
         // eventueel: nieuwe speler maken
