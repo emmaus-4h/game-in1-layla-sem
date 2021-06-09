@@ -59,7 +59,7 @@ var bpop = 70;
 var hvijand1 = 100;
 var bvijand1 = 320;
 
-var aantlevens = 10000;
+var aantlevens = 5;
 
 //var Image2 = loadImage('Images/plaatje.jpeg');
 
@@ -87,10 +87,10 @@ var versnellen = 1
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-//  fill("purple");
+  fill("gray");
 //  preload();
  // setup();
-//  rect(20, 20, width - 2 * 20, height - 2 * 20);
+ rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
 
 
@@ -174,10 +174,11 @@ var beweegKogel = function () {
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
     spelerY = spelerY - 20;
-    //  spelerX = spelerX + 20;
+    spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
     spelerY = spelerY + 20;
+  //  spelerX = spelerX - 20;
     if (spelerY > 900) { spelerY = 900 };
   }
 
@@ -310,6 +311,7 @@ var checkGameOver = function () {
   //  rect(900, 900, 100, 100);
   // }
   if (aantlevens == 0) {
+    textSize(50)
     text("GAME OVER", 800, 100);
     fill("red");
     //rect(100, 100, 100, 100);
@@ -366,6 +368,8 @@ function draw() {
 
         vijandX = 2500;   // x-positie van vijand
         vijandY = 0;
+
+        hvijand1 = hvijand1 +10;
 
 
         // eventueel: nieuwe speler maken
