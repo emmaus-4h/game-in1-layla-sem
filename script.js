@@ -61,7 +61,7 @@ var bvijand1 = 320;
 
 var aantlevens = 10000;
 
-var Image = "tsunami.gif";
+//var Image2 = loadImage('Images/plaatje.jpeg');
 
 var versnellen = 1
 
@@ -69,18 +69,30 @@ var versnellen = 1
 
 
 
-/* ********************************************* */
-/*      functies die je gebruikt in je game      */
-/* ********************************************* */
-
+  /* ********************************************* */
+  /*      functies die je gebruikt in je game      */
+  /* ********************************************* */
+  //let img;
+  //function preload() {
+  // img = loadImage('Images/Plaatje.jpeg');
+ //}
+//function setup() {
+//  background(50);
+  // Top-left corner of the img is at (10, 10)
+  // Width and height are 50 x 50
+//  image(img, 10, 10, 50, 50);
+//}
 
 /**
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-  fill("grey");
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
+//  fill("purple");
+//  preload();
+ // setup();
+//  rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
+
 
 
 /**
@@ -221,16 +233,16 @@ var checkSpelerGeraakt = function () {
   }
 
   if (vijandsnelheid > 40) {
-   versnellen = 0;
+    versnellen = 0;
   }
-  if (vijandsnelheid <= 20 ) {
-   versnellen = 1;
- }
+  if (vijandsnelheid <= 20) {
+    versnellen = 1;
+  }
 
   if (okpopX >= okvijandX && okpopX <= bkvijandX) {
     if (okpopY >= okvijandY && okpopY <= bkvijandY) {
       return true
-    } 
+    }
     else {
       if (bkpopY >= okvijandY && bkpopY <= bkvijandY) {
         return true
@@ -240,7 +252,7 @@ var checkSpelerGeraakt = function () {
   if (bkpopX >= okvijandX && bkpopX <= bkvijandX) {
     if (okpopY >= okvijandY && okpopY <= bkvijandY) {
       return true
-    } 
+    }
     else {
       if (bkpopY >= okvijandY && bkpopY <= bkvijandY) {
         return true
@@ -276,7 +288,7 @@ var checkGameOver = function () {
   // text(spelerY - 550, 600, 100);
   text(okpopX, 500, 100);
   text(okpopY, 550, 100);
-  
+
   text(bkpopX, 700, 100)
   text(bkpopY, 750, 100)
 
@@ -353,7 +365,7 @@ function draw() {
         kogelY = 0;    // y-positie van kogel
 
         vijandX = 2500;   // x-positie van vijand
-        vijandY = 0;   
+        vijandY = 0;
 
 
         // eventueel: nieuwe speler maken
