@@ -27,7 +27,7 @@ const KEY_RIGHT = 39;
 const KEY_LEFT = 37;
 
 var spelerX = 400; // x-positie van speler
-var spelerY = 800; // y-positie van speler
+var spelerY = 0; // y-positie van speler
 
 var snelheidY = 20; // Y-snelheid van speler
 
@@ -99,7 +99,7 @@ var tekenSpeler = function (x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function () {
-  vijandX = vijandX - 40;
+  vijandX = vijandX - 20;
   if (vijandX < 0) {
     vijandX = 2500;
   }
@@ -114,6 +114,7 @@ var beweegKogel = function () {
 };
 
 
+
 /**
  * Kijkt wat de toetsen/muis etc zijn.
  * Updatet globale variabele spelerX en spelerY
@@ -121,9 +122,11 @@ var beweegKogel = function () {
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
     spelerY = spelerY - 20;
+    spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY + 15;
+    spelerY = spelerY + 2;
+    if (spelerY > 900) { spelerY = 900 };
   }
 
   if (keyIsDown(KEY_LEFT)) {
@@ -135,20 +138,13 @@ var beweegSpeler = function () {
   }
 
 
-  if (keyIsDown(KEY_SPACE)) {
-    spelerX = spelerX + 20;
-  }
-
-
   if (tekenSpeler > 900) {
     spelerY = spelerY + 30;
   }
 
-  //spelerY = spelerY - snelheidY;
   if (spelerY > 550) {
     spelerY = 550;
   }
-
 };
 /**
  * Zoekt uit of de vijand is geraakt
@@ -177,11 +173,18 @@ var checkSpelerGeraakt = function () {
  */
 var checkGameOver = function () {
 
-  if (spelerX < 700 && vijandX < 1000)
+  text(spelerX, 500, 100)
+  text(spelerY, 600, 100)
+  text(vijandX, 500, 200)
+  text(vijandY, 600, 200)
 
+  if ((spelerY - 550) == vijandY && spelerX >= vijandX && spelerX <= (vijandX+40)) {
+    stroke('#222222');
+    strokeWeight(4);
+    text("GAME OVER", 800, 100);
+  }
   return false;
 };
-
 
 /**
  * setup
@@ -234,3 +237,5 @@ function draw() {
       break;
   }
 }
+
+
