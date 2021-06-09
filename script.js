@@ -39,6 +39,18 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
+var okpopX = 0;
+var okpopY = 0;
+var bkpopX = 0;
+var bkpopY = 0;
+
+var okvijandX = 0;
+var okvijandY = 0;
+var bkvijandX = 0;
+var bkvijandY = 0;
+
+var aantlevens = 5;
+
 var Image = "tsunami.gif";
 
 
@@ -188,6 +200,8 @@ var checkGameOver = function () {
     stroke('#222222');
     strokeWeight(4);
     text("GAME OVER", 800, 100);
+    fill("red");
+    rect(100,100,100,100);
   }
   return false;
 };
