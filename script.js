@@ -37,6 +37,9 @@ var kogelY = 0;    // y-positie van kogel
 var vijandX = 2500;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
+var vijand2X = 900;
+var vijand2Y = 880;
+
 var score = 0; // aantal behaalde punten
 
 var okpopX = 0;
@@ -50,6 +53,8 @@ var bkvijandX = 0;
 var bkvijandY = 0;
 
 var aantlevens = 5;
+
+
 
 var Image = "tsunami.gif";
 
@@ -84,6 +89,10 @@ var tekenVijand = function (x, y) {
 
 };
 
+var tekenAuto = function (x, y) {
+  fill("blue")
+  rect(vijand2X, 0, 90, 450);
+};
 
 
 
@@ -94,8 +103,7 @@ var tekenVijand = function (x, y) {
  */
 var tekenKogel = function (x, y) {
 
-    fill("black");
-  rect(vijandX, 10, 10, 10);
+
 };
 
 
@@ -121,6 +129,13 @@ var beweegVijand = function () {
   if (vijandX < 0) {
     vijandX = 2500;
   }
+
+  vijand2X = vijand2X - 20;
+  if (vijand2X < 0) {
+    vijand2X = 2500;
+  }
+
+
 };
 
 
@@ -196,13 +211,16 @@ var checkGameOver = function () {
   text(vijandX, 500, 200)
   text(vijandY, 600, 200)
 
-  if ((spelerY - 550) == vijandY && spelerX >= vijandX && spelerX <= (vijandX+40)) {
-    stroke('#222222');
-    strokeWeight(4);
+  if ((spelerY- 550)  == vijandY && spelerX >= vijandX && spelerX <= (vijandX + 40)) {
     text("GAME OVER", 800, 100);
     fill("red");
-    rect(100,100,100,100);
+    rect(100, 100, 100, 100);
   }
+
+  //if ((spelerY == vijand2Y && spelerX >= vijand2X && speler X <= vijand2x)) {
+  //  fill("blue");
+  //  text("HALLO", 500, 200);
+  //}
   return false;
 };
 
@@ -247,6 +265,7 @@ function draw() {
       tekenVijand(vijandX, vijandY);
       tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
+      tekenAuto(vijand2X, vijand2Y);
 
 
 
