@@ -13,7 +13,7 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] beweeg speler
 - [x] teken vijand
 - [x] beweeg vijand
-- [ ] Dingen ontwijken/parcour
+- [X] Dingen ontwijken/parcour
 - [ ] Munten verzamelen
 - [ ] punten op scherm zetten
 - [ ] punten kunnen scoren

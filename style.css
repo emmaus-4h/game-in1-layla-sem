@@ -1,6 +1,3 @@
-
-
-
 .p5Canvas {
   /* zorg dat canvas niet groter wordt dan window
      en behoud breedte x hoogte verhouding van 1280x720 
@@ -16,13 +13,34 @@
   margin: auto;
 }
 
-body {
-  background-image: url("Images/Plaatje.jpeg");
-  background-color: #cccccc;
-}
+ /* plaatje achtergrond*/
+
+/* function add_image() {
+   var img = plaatje.jpeg ('img');
+   img.src= "https://replit.com/@Sem4HA/game-in1-layla-sem#Images/Plaatje.jpeg"; */
+ /* function myFunction() {
+  document.body.style.backgroundImage = "Images/backgroundImage.jpeg('backgroundImage.jpeg')";
+ } */
 
 html, body {
   /* verwijder marge tussen canvas en rand van window
    */ 
   margin: 0px;
+}
+
+/* CSS bestand
+   Hierin staat de opmaak van onze html pagina
+*/
+
+/* marges aan de zijkant van de pagina verwijderen */
+html,body {
+  margin 0px;
+}
+
+/* laat het canvas waarin we onze game maken
+   de volle breedte van het window gebruiken 
+*/
+.p5Canvas {
+  height: 100% !important;
+  max-width: 100% !important;
 }

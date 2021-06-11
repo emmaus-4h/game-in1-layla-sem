@@ -48,10 +48,20 @@ var okpopY = 0;
 var bkpopX = 0;
 var bkpopY = 0;
 
+//var okpop2X = 0;
+//var okpop2Y = 0;
+//var bkpop2X = 0;
+//var bkpop2Y = 0; 
+
 var okvijandX = 0;
 var okvijandY = 0;
 var bkvijandX = 0;
 var bkvijandY = 0;
+
+var okvijand2X = 0;
+var okvijand2Y = 0;
+var bkvijand2X = 0;
+var bkvijand2Y = 0;
 
 var hpop = 160;
 var bpop = 70;
@@ -59,9 +69,12 @@ var bpop = 70;
 var hvijand1 = 100;
 var bvijand1 = 320;
 
-var aantlevens = 5;
+var hvijand2 = 350;
+var bvijand2 = 90;
 
-//var Image2 = loadImage('Images/plaatje.jpeg');
+var aantlevens = 3;
+
+
 
 var versnellen = 1
 
@@ -69,29 +82,58 @@ var versnellen = 1
 
 
 
-  /* ********************************************* */
-  /*      functies die je gebruikt in je game      */
-  /* ********************************************* */
-  //let img;
-  //function preload() {
-  // img = loadImage('Images/Plaatje.jpeg');
- //}
+/* ********************************************* */
+/*      functies die je gebruikt in je game      */
+/* ********************************************* */
+//let img;
+//function preload() {
+// img = loadImage('Images/Plaatje.jpeg');
+//}
 //function setup() {
 //  background(50);
-  // Top-left corner of the img is at (10, 10)
-  // Width and height are 50 x 50
+// Top-left corner of the img is at (10, 10)
+// Width and height are 50 x 50
 //  image(img, 10, 10, 50, 50);
 //}
 
+// HowtoPlaatjes
+// voorbeeld hoe je plaatjes kunt gebruiken in je game
+
+// variabelen waar de plaatjes in worden gestopt
+var imgA = 0;
+
+// deze functie wordt door de p5 library aangeroepen
+// voordat de setup functie wordt uitgevoerd
+// p5 gaat pas verder als alle opdrachten in de functie klaar zijn
+
+
+
+
 /**
  * Tekent het speelveld
- */
+ * */
 var tekenVeld = function () {
+
+  function preload() {
+    imgA = loadImage('Rommel.jpg'); // plaatje laden
+  }
+
+  function setup() {
+    createCanvas(800, 450);
+    background('blue');
+  }
+
+  function draw() {
+    image(imgA, 0, 0, 800, 450); // groot plaatje afbeelden
+  }
+
   fill("gray");
-//  preload();
- // setup();
- rect(20, 20, width - 2 * 20, height - 2 * 20);
+  //  preload();
+  // setup();
+  rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
+
+
 
 
 
@@ -109,8 +151,8 @@ var tekenVijand = function (x, y) {
 };
 
 var tekenAuto = function (x, y) {
-  fill("blue")
-  rect(vijand2X, 0, 90, 450);
+  fill("green")
+  rect(vijand2X, 0, bvijand2, hvijand2);
 };
 
 
@@ -178,7 +220,7 @@ var beweegSpeler = function () {
   }
   if (!keyIsDown(KEY_SPACE)) {
     spelerY = spelerY + 20;
-  //  spelerX = spelerX - 20;
+    //  spelerX = spelerX - 20;
     if (spelerY > 900) { spelerY = 900 };
   }
 
@@ -226,6 +268,11 @@ var checkSpelerGeraakt = function () {
   bkvijandX = vijandX + bvijand1
   bkvijandY = -1 * (vijandY - hvijand1)
 
+  okvijand2X = vijandX
+  okvijand2Y = -1 * vijandY
+  bkvijand2X = vijand2X + bvijand2
+  bkvijand2Y = -1 * (vijand2Y - hvijand2)
+
   if (versnellen == 1) {
     vijandsnelheid = vijandsnelheid + 0.05;
   }
@@ -260,6 +307,27 @@ var checkSpelerGeraakt = function () {
       }
     }
   }
+
+  if (okpopX >= okvijand2X && okpopX <= bkvijand2X) {
+    if (okpopY >= okvijand2Y && okpopY <= bkvijand2Y) {
+      return true
+    }
+    else {
+      if (bkpopY >= okvijand2Y && bkpopY <= bkvijand2Y) {
+        return true
+      }
+    }
+  }
+  if (bkpopX >= okvijand2X && bkpopX <= bkvijand2X) {
+    if (okpopY >= okvijand2Y && okpopY <= bkvijand2Y) {
+      return true
+    }
+    else {
+      if (bkpopY >= okvijand2Y && bkpopY <= bkvijand2Y) {
+        return true
+      }
+    }
+  }
   //   return true;
   // }
 
@@ -284,6 +352,7 @@ var checkSpelerGeraakt = function () {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function () {
+  textSize(30)
   text(aantlevens, 200, 100);
   //text(spelerX, 500, 100);
   // text(spelerY - 550, 600, 100);
@@ -329,10 +398,10 @@ var checkGameOver = function () {
  */
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-  createCanvas(2500, 920);
+  createCanvas(1600, 920);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('black');
+  background('achtergrond.jpeg');
 }
 
 
@@ -369,7 +438,7 @@ function draw() {
         vijandX = 2500;   // x-positie van vijand
         vijandY = 0;
 
-        
+
 
 
         // eventueel: nieuwe speler maken
