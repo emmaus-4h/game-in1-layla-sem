@@ -2,7 +2,7 @@
   /* zorg dat canvas niet groter wordt dan window
      en behoud breedte x hoogte verhouding van 1280x720 
    */  
-  max-width: min(100vh*1280/720, 100vw);
+  max-width: min(100vh*1080/720, 100vw);
   max-height: min(100vw*720/1280, 100vh);
   
 
@@ -13,14 +13,7 @@
   margin: auto;
 }
 
- /* plaatje achtergrond*/
 
-/* function add_image() {
-   var img = plaatje.jpeg ('img');
-   img.src= "https://replit.com/@Sem4HA/game-in1-layla-sem#Images/Plaatje.jpeg"; */
- /* function myFunction() {
-  document.body.style.backgroundImage = "Images/backgroundImage.jpeg('backgroundImage.jpeg')";
- } */
 
 html, body {
   /* verwijder marge tussen canvas en rand van window
@@ -44,3 +37,4 @@ html,body {
   height: 100% !important;
   max-width: 100% !important;
 }
+

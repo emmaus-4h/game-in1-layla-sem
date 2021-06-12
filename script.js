@@ -36,7 +36,7 @@ var kogelY = 0;    // y-positie van kogel
 
 var vijandX = 2500;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
-var vijandsnelheid = 20;
+var vijandsnelheid = 30;
 
 var vijand2X = 900;
 var vijand2Y = 880;
@@ -69,35 +69,23 @@ var bpop = 70;
 var hvijand1 = 100;
 var bvijand1 = 320;
 
-var hvijand2 = 350;
+var hvijand2 = 450;
 var bvijand2 = 90;
 
 var aantlevens = 3;
 
 
 
-var versnellen = 1
+var versnellen = 1;
 
-
+var afbeelding1;
 
 
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
-//let img;
-//function preload() {
-// img = loadImage('Images/Plaatje.jpeg');
-//}
-//function setup() {
-//  background(50);
-// Top-left corner of the img is at (10, 10)
-// Width and height are 50 x 50
-//  image(img, 10, 10, 50, 50);
-//}
 
-// HowtoPlaatjes
-// voorbeeld hoe je plaatjes kunt gebruiken in je game
 
 // variabelen waar de plaatjes in worden gestopt
 var imgA = 0;
@@ -114,23 +102,12 @@ var imgA = 0;
  * */
 var tekenVeld = function () {
 
-  function preload() {
-    imgA = loadImage('Rommel.jpg'); // plaatje laden
-  }
+  fill(171, 254, 255)
 
-  function setup() {
-    createCanvas(800, 450);
-    background('blue');
-  }
+  rect(0, 0, width, height);
 
-  function draw() {
-    image(imgA, 0, 0, 800, 450); // groot plaatje afbeelden
-  }
 
-  fill("gray");
-  //  preload();
-  // setup();
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
+
 };
 
 
@@ -151,7 +128,7 @@ var tekenVijand = function (x, y) {
 };
 
 var tekenAuto = function (x, y) {
-  fill("green")
+  fill("black")
   rect(vijand2X, 0, bvijand2, hvijand2);
 };
 
@@ -178,8 +155,8 @@ var tekenSpeler = function (x, y) {
   rect(x + 0, y + 180, bpop, hpop, 300);
   fill(255, 195, 170);
   ellipse(x + 35, y + 180, 110, 70, 70);
-
-};
+  
+  };
 
 
 /**
@@ -191,7 +168,7 @@ var beweegVijand = function () {
     vijandX = 2500;
   }
 
-  vijand2X = vijand2X - 20;
+  vijand2X = vijand2X - vijandsnelheid;
   if (vijand2X < 0) {
     vijand2X = 2500;
   }
@@ -215,8 +192,8 @@ var beweegKogel = function () {
  */
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
-    spelerY = spelerY - 20;
-    spelerX = spelerX + 20;
+    spelerY = spelerY - 30;
+  //  spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
     spelerY = spelerY + 20;
@@ -233,13 +210,12 @@ var beweegSpeler = function () {
   }
 
 
-  if (tekenSpeler > 900) {
-    spelerY = spelerY + 30;
+  if (spelerX > 2500) {
+    spelerX = 400;
   }
 
   if (spelerY > 550) {
-    spelerY = 550;
-  }
+    spelerY = 550;  }
 };
 /**
  * Zoekt uit of de vijand is geraakt
@@ -258,6 +234,9 @@ var checkVijandGeraakt = function () {
  */
 var checkSpelerGeraakt = function () {
 
+
+
+
   okpopX = spelerX
   okpopY = -1 * (spelerY - 550)
   bkpopX = spelerX + bpop
@@ -268,10 +247,10 @@ var checkSpelerGeraakt = function () {
   bkvijandX = vijandX + bvijand1
   bkvijandY = -1 * (vijandY - hvijand1)
 
-  okvijand2X = vijandX
-  okvijand2Y = -1 * vijandY
+  okvijand2X = vijand2X
+  okvijand2Y = (vijand2Y - hvijand2) 
   bkvijand2X = vijand2X + bvijand2
-  bkvijand2Y = -1 * (vijand2Y - hvijand2)
+  bkvijand2Y = ((vijand2Y)) 
 
   if (versnellen == 1) {
     vijandsnelheid = vijandsnelheid + 0.05;
@@ -352,20 +331,30 @@ var checkSpelerGeraakt = function () {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function () {
+
   textSize(30)
-  text(aantlevens, 200, 100);
+  fill("gray")
+  text("LEVENS", 30, 50);
+  text(aantlevens, 72, 100);
+
+  //text(vijand2X, 500, 100);
+  //text(vijand2Y, 900, 200);
+  //text(spelerX, 1000, 100);
+  //text(spelerY, 1000, 100);
+  
   //text(spelerX, 500, 100);
-  // text(spelerY - 550, 600, 100);
-  text(okpopX, 500, 100);
-  text(okpopY, 550, 100);
+  //text(okpopY, 600, 100);
+  //text(okpopX, 500, 100);
+  //text(okpopY, 500, 100);
 
-  text(bkpopX, 700, 100)
-  text(bkpopY, 750, 100)
+  //text(bkpopX, 700, 100)
+  //text(bkpopY, 700, 100)
 
-  text(okvijandX, 500, 200);
-  text(okvijandY, 600, 200);
-  text(bkvijandY, 700, 200);
-  text(bkvijandY, 800, 200);
+  //text(okvijand2X, 200, 200);
+  //text(vijand2Y, 500,200);
+  //text(okvijand2Y, 600, 200);
+  //text(bkvijand2X, 700, 200);
+  //text(bkvijand2Y, 800, 200);
 
   // if ((spelerY- 550)  == vijandY && spelerX >= vijandX && spelerX <= (vijandX + 40)) {
   //    text("GAME OVER", 800, 100);
@@ -381,7 +370,8 @@ var checkGameOver = function () {
   // }
   if (aantlevens == 0) {
     textSize(50)
-    text("GAME OVER", 800, 100);
+    fill("red")
+    text("GAME OVER", 550, 100);
     fill("red");
     //rect(100, 100, 100, 100);
 
@@ -399,9 +389,6 @@ var checkGameOver = function () {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1600, 920);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('achtergrond.jpeg');
 }
 
 
@@ -455,10 +442,14 @@ function draw() {
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
+
+  
+    //  document.location.reload();
+
       }
       break;
     case GAMEOVER:
-      text("game over", 100, 100);
+     // text("game over", 100, 100);
       break;
   }
 }
