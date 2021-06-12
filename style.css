@@ -38,3 +38,18 @@ html,body {
   max-width: 100% !important;
 }
 
+.button {
+
+  background-color: rgb(171, 254, 255); /* Green */
+  border: none;
+  color: gray;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+aantlevens {
+  font-family: fantasy;
+}

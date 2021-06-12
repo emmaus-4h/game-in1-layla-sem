@@ -37,9 +37,13 @@ var kogelY = 0;    // y-positie van kogel
 var vijandX = 2500;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 var vijandsnelheid = 30;
+var vijandsnelheid2 = 25;
 
 var vijand2X = 900;
 var vijand2Y = 880;
+
+var vijand3X = 1200;
+var vijand3Y = 880;
 
 var score = 0; // aantal behaalde punten
 
@@ -63,20 +67,24 @@ var okvijand2Y = 0;
 var bkvijand2X = 0;
 var bkvijand2Y = 0;
 
+
 var hpop = 160;
 var bpop = 70;
 
-var hvijand1 = 100;
+var hvijand1 = 160;
 var bvijand1 = 320;
 
 var hvijand2 = 450;
 var bvijand2 = 90;
+
 
 var aantlevens = 3;
 
 
 
 var versnellen = 1;
+
+var verlengen = 1;
 
 var afbeelding1;
 
@@ -106,7 +114,15 @@ var tekenVeld = function () {
 
   rect(0, 0, width, height);
 
+  if (aantlevens == 2) {
+    fill(255,165,0);
+    rect(0, 0, width, height);
+  }
 
+  if (aantlevens == 1 ) {
+    fill(255,127,80);
+    rect(0, 0, width, height);
+  }
 
 };
 
@@ -122,6 +138,7 @@ var tekenVeld = function () {
 var tekenVijand = function (x, y) {
   fill("black");
   rect(vijandX, 800, bvijand1, hvijand1);
+
 
 
 
@@ -155,8 +172,8 @@ var tekenSpeler = function (x, y) {
   rect(x + 0, y + 180, bpop, hpop, 300);
   fill(255, 195, 170);
   ellipse(x + 35, y + 180, 110, 70, 70);
-  
-  };
+
+};
 
 
 /**
@@ -168,10 +185,11 @@ var beweegVijand = function () {
     vijandX = 2500;
   }
 
-  vijand2X = vijand2X - vijandsnelheid;
+  vijand2X = vijand2X - vijandsnelheid2;
   if (vijand2X < 0) {
     vijand2X = 2500;
   }
+
 
 
 };
@@ -193,7 +211,7 @@ var beweegKogel = function () {
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
     spelerY = spelerY - 30;
-  //  spelerX = spelerX + 20;
+     spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
     spelerY = spelerY + 20;
@@ -215,7 +233,10 @@ var beweegSpeler = function () {
   }
 
   if (spelerY > 550) {
-    spelerY = 550;  }
+    spelerY = 550;
+  }
+
+  spelerX = spelerX -10;
 };
 /**
  * Zoekt uit of de vijand is geraakt
@@ -248,9 +269,9 @@ var checkSpelerGeraakt = function () {
   bkvijandY = -1 * (vijandY - hvijand1)
 
   okvijand2X = vijand2X
-  okvijand2Y = (vijand2Y - hvijand2) 
+  okvijand2Y = (vijand2Y - hvijand2)
   bkvijand2X = vijand2X + bvijand2
-  bkvijand2Y = ((vijand2Y)) 
+  bkvijand2Y = ((vijand2Y))
 
   if (versnellen == 1) {
     vijandsnelheid = vijandsnelheid + 0.05;
@@ -259,11 +280,28 @@ var checkSpelerGeraakt = function () {
     vijandsnelheid = vijandsnelheid - 0.05;
   }
 
-  if (vijandsnelheid > 40) {
+  if (vijandsnelheid > 50) {
     versnellen = 0;
   }
-  if (vijandsnelheid <= 20) {
+  if (vijandsnelheid <= 30) {
     versnellen = 1;
+  }
+
+
+  if (verlengen == 1) {
+  hvijand2 = hvijand2 + 1;
+  bvijand1 = bvijand1 + 1;
+  }
+  else {
+    hvijand2 = hvijand2 - 1;
+    bvijand1 = bvijand1 - 1;
+  }
+
+  if (hvijand2 > 590) {
+  verlengen = 0;
+  }
+  if (hvijand2 <= 400) {
+    verlengen = 1;
   }
 
   if (okpopX >= okvijandX && okpopX <= bkvijandX) {
@@ -307,6 +345,8 @@ var checkSpelerGeraakt = function () {
       }
     }
   }
+
+
   //   return true;
   // }
 
@@ -341,7 +381,7 @@ var checkGameOver = function () {
   //text(vijand2Y, 900, 200);
   //text(spelerX, 1000, 100);
   //text(spelerY, 1000, 100);
-  
+
   //text(spelerX, 500, 100);
   //text(okpopY, 600, 100);
   //text(okpopX, 500, 100);
@@ -371,9 +411,7 @@ var checkGameOver = function () {
   if (aantlevens == 0) {
     textSize(50)
     fill("red")
-    text("GAME OVER", 550, 100);
-    fill("red");
-    //rect(100, 100, 100, 100);
+    text("GAME OVER", 590, 100);
 
     return true;
   }
@@ -416,6 +454,8 @@ function draw() {
         spelerX = 400; // x-positie van speler
         spelerY = 880; // y-positie van speler
 
+        
+
         snelheidY = 20; // Y-snelheid van speler
         vijandsnelheid = 20
 
@@ -443,13 +483,13 @@ function draw() {
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
 
-  
-    //  document.location.reload();
+
+        //  document.location.reload();
 
       }
       break;
     case GAMEOVER:
-     // text("game over", 100, 100);
+      // text("game over", 100, 100);
       break;
   }
 }
