@@ -198,10 +198,10 @@ var checkSpelerGeraakt = function () {
 
   score();
 
-  if (vijandsnelheid > 50) {
+  if (vijandsnelheid > 45) {
     versnellen = 0;
   }
-  if (vijandsnelheid <= 30) {
+  if (vijandsnelheid <= 25) {
     versnellen = 1;
   }
 
@@ -215,10 +215,10 @@ var checkSpelerGeraakt = function () {
     bvijand1 = bvijand1 - 1;
   }
 
-  if (hvijand2 > 500) {
+  if (hvijand2 > 450) {
     verlengen = 0;
   }
-  if (hvijand2 <= 300) {
+  if (hvijand2 <= 200) {
     verlengen = 1;
   }
 
@@ -283,10 +283,6 @@ var checkGameOver = function () {
   fill("gray")
   text("LEVENS", 30, 50);
   text(aantlevens, 72, 100);
-
-  textSize(30)
-  fill("gray")
-
 
   textSize(30)
   fill("gray")
@@ -372,6 +368,11 @@ var checkGameOver = function () {
       textSize(20);
       text("Herstart het spel met de blauwe restart knop", 10, 900);
     }
+
+    textSize(30)
+  fill("white")
+  text("Score:", 1450, 50);
+
     return true;
   }
   return false;
