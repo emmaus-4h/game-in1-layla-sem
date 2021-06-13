@@ -88,6 +88,9 @@ var verlengen = 1;
 
 var afbeelding1;
 
+var scorepunten = 0;
+
+
 
 
 /* ********************************************* */
@@ -114,28 +117,28 @@ var tekenVeld = function () {
 
   rect(0, 0, width, height);
 
-  if (aantlevens == 4 ) {
-    fill(255,165,0);
+  if (aantlevens == 4) {
+    fill(255, 165, 0);
     rect(0, 0, width, height);
   }
 
-  if (aantlevens == 3 ) {
-    fill(255,145,0);
+  if (aantlevens == 3) {
+    fill(255, 145, 0);
     rect(0, 0, width, height);
   }
 
-  if (aantlevens == 2  ) {
-    fill(255,127,80);
+  if (aantlevens == 2) {
+    fill(255, 127, 80);
     rect(0, 0, width, height);
   }
 
-  if (aantlevens == 1  ) {
-    fill(255,107,80);
+  if (aantlevens == 1) {
+    fill(255, 107, 80);
     rect(0, 0, width, height);
   }
 
-  if (aantlevens == 0  ) {
-    fill(255,0,0)
+  if (aantlevens == 0) {
+    fill(255, 0, 0)
     rect(0, 0, width, height);
   }
 
@@ -226,7 +229,7 @@ var beweegKogel = function () {
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
     spelerY = spelerY - 30;
-     spelerX = spelerX + 20;
+    spelerX = spelerX + 20;
   }
   if (!keyIsDown(KEY_SPACE)) {
     spelerY = spelerY + 20;
@@ -251,7 +254,7 @@ var beweegSpeler = function () {
     spelerY = 550;
   }
 
-  spelerX = spelerX -10;
+  spelerX = spelerX - 10;
 };
 /**
  * Zoekt uit of de vijand is geraakt
@@ -295,6 +298,8 @@ var checkSpelerGeraakt = function () {
     vijandsnelheid = vijandsnelheid - 0.05;
   }
 
+  score();
+
   if (vijandsnelheid > 50) {
     versnellen = 0;
   }
@@ -304,18 +309,18 @@ var checkSpelerGeraakt = function () {
 
 
   if (verlengen == 1) {
-  hvijand2 = hvijand2 + 1;
-  bvijand1 = bvijand1 + 1;
+    hvijand2 = hvijand2 + 1;
+    bvijand1 = bvijand1 + 1;
   }
   else {
     hvijand2 = hvijand2 - 1;
     bvijand1 = bvijand1 - 1;
   }
 
-  if (hvijand2 > 590) {
-  verlengen = 0;
+  if (hvijand2 > 500) {
+    verlengen = 0;
   }
-  if (hvijand2 <= 400) {
+  if (hvijand2 <= 300) {
     verlengen = 1;
   }
 
@@ -380,6 +385,20 @@ var checkSpelerGeraakt = function () {
   return false;
 };
 
+var score = function () {
+
+  if (vijandsnelheid >= 60) {
+    scorepunten = scorepunten + 1;
+  }
+
+  if (vijandsnelheid >= 30) {
+    scorepunten = scorepunten + 0.5;
+  }
+
+
+};
+
+
 
 /**
  * Zoekt uit of het spel is afgelopen
@@ -391,6 +410,33 @@ var checkGameOver = function () {
   fill("gray")
   text("LEVENS", 30, 50);
   text(aantlevens, 72, 100);
+
+  textSize(30)
+  fill("gray")
+
+
+  textSize(30)
+  fill("gray")
+  text("Score:", 1450, 50);
+
+  text(scorepunten, 1450, 100);
+
+  if (scorepunten < 200) {
+      textSize(30);
+      text("Spatiebalk is springen", 10, 200);
+      textSize(30);
+      text("Links is pijltje naar links", 10, 250);
+      textSize(30);
+      text("Rechts is pijltje naar rechts", 10, 300);
+      text("Doel --> Ontwijk de zwarte blokken", 10, 350);
+      text("Let goed op want de blokken veranderen van vorm", 10, 400);
+      text("MET EEN SCORE BOVEN DE 6000 BEN JE 'RULER OF THE GAME'", 350, 30);
+    }
+
+  if (aantlevens == 1) {
+    text("JE HEBT NOG 1 LEVEN!!", 600, 30)
+  }
+
 
   //text(vijand2X, 500, 100);
   //text(vijand2Y, 900, 200);
@@ -424,9 +470,71 @@ var checkGameOver = function () {
   //  rect(900, 900, 100, 100);
   // }
   if (aantlevens == 0) {
-    textSize(50)
-    fill("red")
-    text("GAME OVER", 590, 100);
+    textSize(80)
+    fill("white")
+    text("GAME OVER", 550, 100);
+
+
+    if (scorepunten < 200) {
+
+      textSize(50);
+      text("Volgende keer beter", 550, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+    if (scorepunten > 200 && scorepunten < 500) {
+      textSize(50);
+      text("Je begint het te snappen", 550, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+    if (scorepunten > 200 && scorepunten > 500 && scorepunten < 1000) {
+      textSize(50);
+      text("Goed zo", 700, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+    if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten < 1500) {
+      textSize(50);
+      text("Expert", 710, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+     if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten < 2000) {
+      textSize(50);
+      text("Briljant", 710, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+  if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten > 2000 && scorepunten < 3000) {
+      textSize(50);
+      text("Uitmuntend", 650, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+    if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten > 2000 && scorepunten > 3000 && scorepunten < 6000) {
+      textSize(50);
+      text("KING OF THE GAME", 600, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+    if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten > 2000 && scorepunten > 3000 && scorepunten > 6000 && scorepunten > 6001) {
+      textSize(50);
+      text("RULER OF THE GAME", 550, 500)
+      textSize(20);
+      text("Herstart het spel met de blauwe restart knop", 10, 900);
+    }
+
+    
+
+
 
     return true;
   }
@@ -469,7 +577,7 @@ function draw() {
         spelerX = 400; // x-positie van speler
         spelerY = 880; // y-positie van speler
 
-        
+
 
         snelheidY = 20; // Y-snelheid van speler
         vijandsnelheid = 20
