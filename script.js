@@ -2,16 +2,6 @@
 /// <reference path=".gitpod/p5.global-mode.d.ts" />
 "use strict";
 
-/* Game opdracht
-   Informatica - Emmauscollege Rotterdam
-   Template voor een game in JavaScript met de p5 library
-
-   Begin met dit template voor je game opdracht,
-   voeg er je eigen code aan toe.
- */
-
-
-
 
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
@@ -97,20 +87,6 @@ var scorepunten = 0;
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
-
-// variabelen waar de plaatjes in worden gestopt
-var imgA = 0;
-
-// deze functie wordt door de p5 library aangeroepen
-// voordat de setup functie wordt uitgevoerd
-// p5 gaat pas verder als alle opdrachten in de functie klaar zijn
-
-
-
-
-/**
- * Tekent het speelveld
- * */
 var tekenVeld = function () {
 
   fill(171, 254, 255)
@@ -141,25 +117,11 @@ var tekenVeld = function () {
     fill(255, 0, 0)
     rect(0, 0, width, height);
   }
-
 };
 
-
-
-
-
-/**
- * Tekent de vijand
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
 var tekenVijand = function (x, y) {
   fill("black");
   rect(vijandX, 800, bvijand1, hvijand1);
-
-
-
-
 };
 
 var tekenAuto = function (x, y) {
@@ -167,24 +129,6 @@ var tekenAuto = function (x, y) {
   rect(vijand2X, 0, bvijand2, hvijand2);
 };
 
-
-
-/**
- * Tekent de kogel of de bal
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
-var tekenKogel = function (x, y) {
-
-
-};
-
-
-/**
- * Tekent de speler
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
 var tekenSpeler = function (x, y) {
   fill("red");
   rect(x + 0, y + 180, bpop, hpop, 300);
@@ -193,10 +137,6 @@ var tekenSpeler = function (x, y) {
 
 };
 
-
-/**
- * Updatet globale variabelen met positie van vijand of tegenspeler
- */
 var beweegVijand = function () {
   vijandX = vijandX - vijandsnelheid;
   if (vijandX < 0) {
@@ -207,25 +147,9 @@ var beweegVijand = function () {
   if (vijand2X < 0) {
     vijand2X = 2500;
   }
-
-
-
 };
 
 
-/**
- * Updatet globale variabelen met positie van kogel of bal
- */
-var beweegKogel = function () {
-
-};
-
-
-
-/**
- * Kijkt wat de toetsen/muis etc zijn.
- * Updatet globale variabele spelerX en spelerY
- */
 var beweegSpeler = function () {
   if (keyIsDown(KEY_SPACE)) {
     spelerY = spelerY - 30;
@@ -256,25 +180,8 @@ var beweegSpeler = function () {
 
   spelerX = spelerX - 10;
 };
-/**
- * Zoekt uit of de vijand is geraakt
- * @returns {boolean} true als vijand is geraakt
- */
-var checkVijandGeraakt = function () {
 
-  return false;
-};
-
-
-/**
- * Zoekt uit of de speler is geraakt
- * bijvoorbeeld door botsing met vijand
- * @returns {boolean} true als speler is geraakt
- */
 var checkSpelerGeraakt = function () {
-
-
-
 
   okpopX = spelerX
   okpopY = -1 * (spelerY - 550)
@@ -365,23 +272,6 @@ var checkSpelerGeraakt = function () {
       }
     }
   }
-
-
-  //   return true;
-  // }
-
-  // if (bkpopX > okvijandX && bkpopX < bkvijandX) {
-  //   return true;
-  // }
-
-  //if (okpopY < okvijandY && okpopY > bkvijandY) {
-  //  return true;
-  //}
-
-  //if (bkpopY < okvijandY && bkpopY > bkvijandY) {
-  //  return true;
-  //}
-
   return false;
 };
 
@@ -394,16 +284,8 @@ var score = function () {
   if (vijandsnelheid >= 30) {
     scorepunten = scorepunten + 0.5;
   }
-
-
 };
 
-
-
-/**
- * Zoekt uit of het spel is afgelopen
- * @returns {boolean} true als het spel is afgelopen
- */
 var checkGameOver = function () {
 
   textSize(30)
@@ -421,54 +303,22 @@ var checkGameOver = function () {
 
   text(scorepunten, 1450, 100);
 
-  if (scorepunten < 200) {
-      textSize(30);
-      text("Spatiebalk is springen", 10, 200);
-      textSize(30);
-      text("Links is pijltje naar links", 10, 250);
-      textSize(30);
-      text("Rechts is pijltje naar rechts", 10, 300);
-      text("Doel --> Ontwijk de zwarte blokken", 10, 350);
-      text("Let goed op want de blokken veranderen van vorm", 10, 400);
-      text("MET EEN SCORE BOVEN DE 6000 BEN JE 'RULER OF THE GAME'", 350, 30);
-    }
+  if (scorepunten < 150) {
+    textSize(30);
+    text("Spatiebalk is springen", 10, 200);
+    textSize(30);
+    text("Links is pijltje naar links", 10, 250);
+    textSize(30);
+    text("Rechts is pijltje naar rechts", 10, 300);
+    text("Doel --> Ontwijk de zwarte blokken", 10, 350);
+    text("Let goed op want de blokken veranderen van vorm", 10, 400);
+    text("MET EEN SCORE BOVEN DE 6000 BEN JE 'RULER OF THE GAME'", 350, 30);
+  }
 
   if (aantlevens == 1) {
     text("JE HEBT NOG 1 LEVEN!!", 600, 30)
   }
 
-
-  //text(vijand2X, 500, 100);
-  //text(vijand2Y, 900, 200);
-  //text(spelerX, 1000, 100);
-  //text(spelerY, 1000, 100);
-
-  //text(spelerX, 500, 100);
-  //text(okpopY, 600, 100);
-  //text(okpopX, 500, 100);
-  //text(okpopY, 500, 100);
-
-  //text(bkpopX, 700, 100)
-  //text(bkpopY, 700, 100)
-
-  //text(okvijand2X, 200, 200);
-  //text(vijand2Y, 500,200);
-  //text(okvijand2Y, 600, 200);
-  //text(bkvijand2X, 700, 200);
-  //text(bkvijand2Y, 800, 200);
-
-  // if ((spelerY- 550)  == vijandY && spelerX >= vijandX && spelerX <= (vijandX + 40)) {
-  //    text("GAME OVER", 800, 100);
-  //    fill("red");
-  //   rect(100, 100, 100, 100);
-  //  };
-
-  //if (spelerY == vijand2Y && spelerX >= vijand2X && spelerX <= vijand2X) {
-  //  fill("blue");
-  //  text("HALLO", 500, 200);
-  //  fill("yellow")
-  //  rect(900, 900, 100, 100);
-  // }
   if (aantlevens == 0) {
     textSize(80)
     fill("white")
@@ -504,14 +354,14 @@ var checkGameOver = function () {
       text("Herstart het spel met de blauwe restart knop", 10, 900);
     }
 
-     if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten < 2000) {
+    if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten < 2000) {
       textSize(50);
       text("Briljant", 710, 500)
       textSize(20);
       text("Herstart het spel met de blauwe restart knop", 10, 900);
     }
 
-  if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten > 2000 && scorepunten < 3000) {
+    if (scorepunten > 200 && scorepunten > 500 && scorepunten > 1000 && scorepunten > 1500 && scorepunten > 2000 && scorepunten < 3000) {
       textSize(50);
       text("Uitmuntend", 650, 500)
       textSize(20);
@@ -531,45 +381,20 @@ var checkGameOver = function () {
       textSize(20);
       text("Herstart het spel met de blauwe restart knop", 10, 900);
     }
-
-    
-
-
-
     return true;
   }
-
   return false;
 };
 
-/**
- * setup
- * de code in deze functie wordt één keer uitgevoerd door
- * de p5 library, zodra het spel geladen is in de browser
- */
 function setup() {
-  // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1600, 920);
 }
 
-
-
-/**
- * draw
- * de code in deze functie wordt meerdere keren per seconde
- * uitgevoerd door de p5 library, nadat de setup functie klaar is
- */
 function draw() {
   switch (spelStatus) {
     case SPELEN:
       beweegVijand();
-      beweegKogel();
       beweegSpeler();
-
-      if (checkVijandGeraakt()) {
-        // punten erbij
-        // nieuwe vijand maken
-      }
 
       if (checkSpelerGeraakt()) {
         // leven eraf of gezondheid verlagen
@@ -587,32 +412,20 @@ function draw() {
 
         vijandX = 2500;   // x-positie van vijand
         vijandY = 0;
-
-
-
-
-        // eventueel: nieuwe speler maken
       }
 
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
       tekenAuto(vijand2X, vijand2Y);
-
-
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
 
-
-        //  document.location.reload();
-
       }
       break;
     case GAMEOVER:
-      // text("game over", 100, 100);
       break;
   }
 }
