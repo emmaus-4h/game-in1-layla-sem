@@ -41,12 +41,7 @@ var okpopX = 0;
 var okpopY = 0;
 var bkpopX = 0;
 var bkpopY = 0;
-
-//var okpop2X = 0;
-//var okpop2Y = 0;
-//var bkpop2X = 0;
-//var bkpop2Y = 0; 
-
+ 
 var okvijandX = 0;
 var okvijandY = 0;
 var bkvijandX = 0;
@@ -57,7 +52,6 @@ var okvijand2Y = 0;
 var bkvijand2X = 0;
 var bkvijand2Y = 0;
 
-
 var hpop = 160;
 var bpop = 70;
 
@@ -67,10 +61,7 @@ var bvijand1 = 320;
 var hvijand2 = 450;
 var bvijand2 = 90;
 
-
 var aantlevens = 5;
-
-
 
 var versnellen = 1;
 

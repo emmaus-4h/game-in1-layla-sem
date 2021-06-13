@@ -14,22 +14,18 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] teken vijand
 - [x] beweeg vijand
 - [X] Dingen ontwijken/parcour
-- [ ] Munten verzamelen
-- [ ] punten op scherm zetten
-- [ ] punten kunnen scoren
-- [ ] Highscore verbeteren
-- [ ] uitlegscherm
-- [ ] Boosts verzinnen/maken
+- [X] punten op scherm zetten
+- [X] punten kunnen scoren
+- [X] Highscore verbeteren
+- [X] uitlegscherm
+- [X] Boosts verzinnen/maken
 
 Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
+- [X] Blokken verlengen
+- [X] Blokken verkorten
+- [X] Blokken versnellen
+- [X] Blokken vertragen
 
-Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
-- [ ] *later uitwerken*
 
 ## Credits
 - Game template van het Emmauscollege Rotterdam https://github.com/emmauscollege/4HV-game-template
