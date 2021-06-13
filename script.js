@@ -78,7 +78,7 @@ var hvijand2 = 450;
 var bvijand2 = 90;
 
 
-var aantlevens = 3;
+var aantlevens = 5;
 
 
 
@@ -114,13 +114,28 @@ var tekenVeld = function () {
 
   rect(0, 0, width, height);
 
-  if (aantlevens == 2) {
+  if (aantlevens == 4 ) {
     fill(255,165,0);
     rect(0, 0, width, height);
   }
 
-  if (aantlevens == 1 ) {
+  if (aantlevens == 3 ) {
+    fill(255,145,0);
+    rect(0, 0, width, height);
+  }
+
+  if (aantlevens == 2  ) {
     fill(255,127,80);
+    rect(0, 0, width, height);
+  }
+
+  if (aantlevens == 1  ) {
+    fill(255,107,80);
+    rect(0, 0, width, height);
+  }
+
+  if (aantlevens == 0  ) {
+    fill(255,0,0)
     rect(0, 0, width, height);
   }
 
